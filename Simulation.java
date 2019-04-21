@@ -45,7 +45,7 @@ public abstract class Simulation {
    public void initializeJob() {
       for (int i = 0; i < TASKS_PER_JOB; i++) {
          long length = createNewTaskLength();
-         this.readyQueue.add(new Task(Task.time, length));
+         this.readyQueue.add(new Task(Task.time, length, this));
       }
    }
    
