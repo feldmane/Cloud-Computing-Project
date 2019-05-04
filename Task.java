@@ -8,7 +8,6 @@ public class Task implements Comparable<Task> {
    private long startTime;
    private long length;
    private long timeRemaining;
-   private long firstTimeRun;
    private double throughput;
    private int priority;
    private int timeslice;
@@ -20,22 +19,20 @@ public class Task implements Comparable<Task> {
       this.length = l;
       this.simulation = s;
       this.timeRemaining = l;
-      this.firstTimeRun = -1;
       this.throughput = -1;
       this.priority = 64;
       this.timeslice = 2;
-      this.r = new Random();
+      this.r = new Random(1);
    }
    
    public int run (boolean blocking) {
       int counter = 0;
-      this.firstTimeRun = Task.time;
       while (timeRemaining > 0) {
          Task.time++;
          this.timeRemaining--;
          counter++;
          if (blocking) {
-            if (r.nextFloat() < 0.02) {
+            if (r.nextFloat() < 0.2) {
                return -1;
             } 
             if (counter == this.timeslice) {
@@ -71,7 +68,7 @@ public class Task implements Comparable<Task> {
       if (this.simulation instanceof MLFQSimulation) {
          return other.getPriority() - this.priority;
       } else {
-         return (int)other.getLength() - (int)this.length;
+         return (int)this.length - (int)other.getLength();
       }
    }
    

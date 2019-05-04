@@ -15,7 +15,7 @@ public abstract class Simulation {
    
    public Simulation() {
       this.avgThroughput = 0;
-      this.randomGenerator = new Random();
+      this.randomGenerator = new Random(1);
    }
    
    public double getThroughput() {
@@ -25,7 +25,7 @@ public abstract class Simulation {
    public long createNewTaskLength() {
       double percentOfShortJobs = 0.7;
       long baseShortJob = 10;
-      long baseLongJob = 30;
+      long baseLongJob = 100;
       int maxOffset = 5;
             
       int getPlusOrMinus = randomGenerator.nextInt(2);
