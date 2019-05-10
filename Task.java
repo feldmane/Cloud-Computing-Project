@@ -2,8 +2,6 @@ import java.lang.Comparable;
 import java.util.Random;
 
 public class Task implements Comparable<Task> {
-
-   public static long time = 0;
       
    private long startTime;
    private long length;
@@ -28,7 +26,7 @@ public class Task implements Comparable<Task> {
    public int run (boolean blocking) {
       int counter = 0;
       while (timeRemaining > 0) {
-         Task.time++;
+         Simulation.time++;
          this.timeRemaining--;
          counter++;
          if (blocking) {
@@ -40,7 +38,7 @@ public class Task implements Comparable<Task> {
             }
          }
       }
-      this.throughput = Task.time - this.startTime;
+      this.throughput = Simulation.time - this.startTime;
       return 0;
    }
    
@@ -70,9 +68,5 @@ public class Task implements Comparable<Task> {
       } else {
          return (int)this.length - (int)other.getLength();
       }
-   }
-   
-   public static void resetTime() {
-      Task.time = 0;
    }
 }

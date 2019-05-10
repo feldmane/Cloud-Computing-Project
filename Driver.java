@@ -5,13 +5,12 @@ public class Driver {
       Simulation MLFQ = new MLFQSimulation();
       Simulation SJF = new SJFSimulation();
       FIFO.run();
-      Task.resetTime();
+      Simulation.resetTime();
       MLFQ.run();
-      Task.resetTime();
+      Simulation.resetTime();
       SJF.run();
       System.out.println("FIFO Scheduler avg throughput: " + FIFO.getThroughput());
       System.out.println("MLFQ Scheduler avg throughput: " + MLFQ.getThroughput());
-      System.out.println("SJF Scheduler avg throughput: " + SJF.getThroughput());
-      
+      System.out.println("SJF Scheduler avg throughput: " + SJF.getThroughput());      
    }     
 }

@@ -3,6 +3,8 @@ import java.util.Random;
 
 public abstract class Simulation {
 
+   public static long time = 0;
+
    protected final int NUMBER_OF_JOBS = 2;
    
    protected final int TASKS_PER_JOB = 10;
@@ -12,6 +14,8 @@ public abstract class Simulation {
    protected double avgThroughput;
    
    protected Random randomGenerator;
+   
+   protected long endTime;
    
    public Simulation() {
       this.avgThroughput = 0;
@@ -45,8 +49,13 @@ public abstract class Simulation {
    public void initializeJob() {
       for (int i = 0; i < TASKS_PER_JOB; i++) {
          long length = createNewTaskLength();
-         this.readyQueue.add(new Task(Task.time, length, this));
+         this.readyQueue.add(new Task(Simulation.time, length, this));
       }
+   }
+   
+      
+   public static void resetTime() {
+      Simulation.time = 0;
    }
    
    public abstract void run();
