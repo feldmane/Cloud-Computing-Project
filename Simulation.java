@@ -7,7 +7,7 @@ public abstract class Simulation {
 
    protected final int NUMBER_OF_JOBS = 2;
    
-   protected final int TASKS_PER_JOB = 10;
+   protected final int TASKS_PER_JOB = 100;
    
    protected Queue<Task> readyQueue;
    
